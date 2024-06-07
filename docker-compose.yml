@@ -1,0 +1,7 @@
+services:
+  chimaera:
+    image: paschendale/chimaera
+    build: .
+    restart: always
+    ports:
+      - "3001:3001"
