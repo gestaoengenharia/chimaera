@@ -1,6 +1,6 @@
 services:
-  chimaera:
-    image: paschendale/chimaera
+  libelula:
+    image: paschendale/libelula
     build: .
     restart: always
     ports:
