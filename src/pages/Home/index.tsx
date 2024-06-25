@@ -1,9 +1,11 @@
 import { Box, Button, Image, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../Layout";
 import bgOrto from "./../../assets/bg-orto.jpg";
 import droneSVG from "./../../assets/drone.svg";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <Layout>
       <Box
@@ -107,6 +109,7 @@ export default function Home() {
                 color: "white",
                 marginTop: 2,
               }}
+              onClick={() => navigate("/focos")}
             >
               Acesso cidadão
             </Button>
@@ -117,6 +120,7 @@ export default function Home() {
                 color: "white",
                 marginTop: 2,
               }}
+              onClick={() => navigate("/focos")}
             >
               Acesso SEMSA
             </Button>
