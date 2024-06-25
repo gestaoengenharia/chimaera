@@ -3,9 +3,9 @@ import { theme } from "../theme";
 import Chart from "./Chart";
 
 export default function Dashboard() {
+  const today = new Date();
   function generateRandomData() {
     const data = [];
-    const today = new Date();
     const startDate = Date.UTC(
       today.getFullYear() - 1,
       today.getMonth(),
@@ -80,7 +80,9 @@ export default function Dashboard() {
       },
     },
     subtitle: {
-      text: "entre junho/23 e junho/24",
+      text: `entre ${monthNames[today.getMonth()]}/${
+        today.getFullYear() - 2000
+      } e ${monthNames[today.getMonth()]}/${today.getFullYear() - 2000}`,
       style: {
         color: "#FFFFFF",
       },
@@ -214,7 +216,8 @@ export default function Dashboard() {
             fontWeight: "100",
           }}
         >
-          entre jun/23 e jun/24
+          entre {monthNames[today.getMonth()]}/{today.getFullYear() - 2000} e{" "}
+          {monthNames[today.getMonth()]}/{today.getFullYear() - 2000}
         </Text>
         <Text
           sx={{

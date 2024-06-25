@@ -1,7 +1,9 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useState } from "react";
-import Map from "react-map-gl";
+import Map, { Layer, Source } from "react-map-gl";
+import { setoresCensitarios } from "../assets/setores_censitarios";
 import { useApp } from "../providers/AppProvider";
+import { theme } from "../theme";
 
 export default function MapComponent() {
   const { mapRef } = useApp();
@@ -19,15 +21,53 @@ export default function MapComponent() {
     },
   });
 
+  function getColorStops() {
+    return [
+      [0, theme.colors.brand["green100"]],
+      [30, theme.colors.brand["green200"]],
+      [60, theme.colors.brand["green300"]],
+      [90, theme.colors.brand["green400"]],
+      [120, theme.colors.brand["green500"]],
+      [150, theme.colors.brand["green600"]],
+      [180, theme.colors.brand["green700"]],
+      [210, theme.colors.brand["green800"]],
+      [240, theme.colors.brand["green900"]],
+      [270, theme.colors.brand["green900"]],
+      [300, theme.colors.brand["green900"]],
+    ];
+  }
+
   return (
     <Map
       reuseMaps
       {...viewState}
+      attributionControl={false}
       ref={mapRef}
       onMove={(evt) => setViewState(evt.viewState)}
       mapboxAccessToken="pk.eyJ1IjoicGFzY2hlbmRhbGUiLCJhIjoiY2x4bG1haThnMDFrMDJrcHpnbThqOGd2diJ9.S9-iSawymgjbPoxSc7gWtg"
       style={{ width: "100%", height: "100%" }}
       mapStyle="mapbox://styles/paschendale/clxlmdqkh020k01qm8vsvexzm"
-    />
+    >
+      <Source id="setores" type="geojson" data={setoresCensitarios as any}>
+        <Layer
+          {...{
+            id: "setores-fill",
+            type: "fill",
+            source: "setores", // reference the data source
+            layout: {},
+            paint: {
+              "fill-color": [
+                "interpolate",
+                ["linear"],
+                ["get", "casos"],
+                ...getColorStops().flat(),
+              ],
+              "fill-opacity": 0.8,
+              "fill-outline-color": theme.colors.brand["lightgreen"],
+            },
+          }}
+        ></Layer>
+      </Source>
+    </Map>
   );
 }
