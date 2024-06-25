@@ -1,5 +1,5 @@
 import { createContext, useContext, useRef } from "react";
-import { MapRef } from "react-map-gl/dist/esm/exports-maplibre";
+import { MapRef } from "react-map-gl";
 
 const AppContext = createContext<{
   mapRef: React.MutableRefObject<MapRef | null> | null;

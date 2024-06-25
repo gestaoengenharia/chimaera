@@ -1,16 +1,14 @@
-import maplibregl from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 import { useState } from "react";
-import MapGL from "react-map-gl/maplibre";
-import { mapstyle } from "../mapstyle";
+import Map from "react-map-gl";
 import { useApp } from "../providers/AppProvider";
 
-export default function Map() {
+export default function MapComponent() {
   const { mapRef } = useApp();
   const [viewState, setViewState] = useState({
-    longitude: -62.648736376081786,
-    latitude: -25.63613760812686,
-    zoom: 2.6090850674385604,
+    longitude: -42.90748652643276,
+    latitude: -20.40436261357887,
+    zoom: 11.181550333109245,
     pitch: 0,
     bearing: 0,
     padding: {
@@ -22,13 +20,14 @@ export default function Map() {
   });
 
   return (
-    <MapGL
+    <Map
+      reuseMaps
       {...viewState}
       ref={mapRef}
-      mapLib={maplibregl}
       onMove={(evt) => setViewState(evt.viewState)}
+      mapboxAccessToken="pk.eyJ1IjoicGFzY2hlbmRhbGUiLCJhIjoiY2x4bG1haThnMDFrMDJrcHpnbThqOGd2diJ9.S9-iSawymgjbPoxSc7gWtg"
       style={{ width: "100%", height: "100%" }}
-      mapStyle={mapstyle as any}
+      mapStyle="mapbox://styles/paschendale/clxlmdqkh020k01qm8vsvexzm"
     />
   );
 }
