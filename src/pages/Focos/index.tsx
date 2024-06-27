@@ -8,22 +8,48 @@ export default function App() {
     <Layout>
       <Box textAlign="center" fontSize="xl">
         <Flex
-          minH="100vh"
-          flexDir={"row"}
-          minW={"100vw"}
-          justifyContent={"space-between"}
-          zIndex={1}
-          maxH={"100vh"}
+          sx={{
+            minHeight: "100vh",
+            flexDirection: "row",
+            minWidth: "100vw",
+            maxWidth: "100vw",
+            justifyContent: "space-between",
+            zIndex: 1,
+            maxHeight: "100vh",
+            "@media (max-width: 768px)": {
+              flexDirection: "column",
+              maxHeight: "none",
+            },
+          }}
         >
-          <Box flex={1}>
+          <Box
+            sx={{
+              flex: 1,
+              "@media (max-width: 768px)": {
+                flex: "none",
+                flexDirection: "column",
+                height: "90vh",
+              },
+            }}
+          >
             <Map />
           </Box>
           <Box
-            borderRadius={"5px 0 0 5px"}
-            boxShadow={"-12px 0px 5px -3px rgba(0,0,0,0.25);"}
-            maxW={"400px"}
-            flex={1}
-            zIndex={2}
+            sx={{
+              borderRadius: "5px 0 0 5px",
+              boxShadow: "-12px 0px 5px -3px rgba(0,0,0,0.25);",
+              width: "400px",
+              maxWidth: "100vw",
+              flex: 1,
+              zIndex: 2,
+              "@media (max-width: 768px)": {
+                flex: "none",
+                flexDirection: "column",
+                borderTopLeftRadius: "12px",
+                borderTopRightRadius: "12px",
+                boxShadow: "0px -10px 5px -3px rgba(0,0,0,0.25);",
+              },
+            }}
           >
             <Dashboard />
           </Box>

@@ -40,6 +40,9 @@ export default function Navbar() {
         flexDirection: "row",
         justifyContent: "space-between",
         width: "100%",
+        "@media (max-width: 768px)": {
+          justifyContent: "center",
+        },
       }}
     >
       <Tabs
@@ -48,7 +51,11 @@ export default function Navbar() {
           backgroundColor: "#00000000",
         }}
       >
-        <TabList>
+        <TabList
+          sx={{
+            border: "none",
+          }}
+        >
           <Tab onClick={(e) => handleNavigation(e, "/")}>Home</Tab>
           <Tab onClick={(e) => handleNavigation(e, "/focos")}>Focos</Tab>
           <Tab onClick={(e) => handleNavigation(e, "/casos")}>Casos</Tab>
