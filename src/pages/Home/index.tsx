@@ -110,7 +110,6 @@ export default function Home() {
                 width: "100vw",
                 boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
                 transform: "skew(-10deg)",
-                animation: `${fadeIn} 0.3s ease-in`,
               }}
             />
           </Box>

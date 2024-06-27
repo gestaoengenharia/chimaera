@@ -1,3 +1,4 @@
+import { keyframes } from "@chakra-ui/react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useState } from "react";
 import Map, { Layer, Source } from "react-map-gl";
@@ -37,6 +38,11 @@ export default function MapComponent() {
     ];
   }
 
+  const fadeIn = keyframes`
+    from { opacity: 0; }
+    to { opacity: 1; }
+  `;
+
   return (
     <Map
       reuseMaps
@@ -45,7 +51,11 @@ export default function MapComponent() {
       ref={mapRef}
       onMove={(evt) => setViewState(evt.viewState)}
       mapboxAccessToken="pk.eyJ1IjoicGFzY2hlbmRhbGUiLCJhIjoiY2x4bG1haThnMDFrMDJrcHpnbThqOGd2diJ9.S9-iSawymgjbPoxSc7gWtg"
-      style={{ width: "100%", height: "100%" }}
+      style={{
+        width: "100%",
+        height: "100%",
+        animation: `${fadeIn} 0.3s ease-in`,
+      }}
       mapStyle="mapbox://styles/paschendale/clxlmdqkh020k01qm8vsvexzm"
     >
       <Source id="setores" type="geojson" data={setoresCensitarios as any}>
@@ -63,6 +73,7 @@ export default function MapComponent() {
                 ...getColorStops().flat(),
               ],
               "fill-opacity": 0.8,
+              "fill-opacity-transition": { duration: 500 },
               "fill-outline-color": theme.colors.brand["lightgreen"],
             },
           }}

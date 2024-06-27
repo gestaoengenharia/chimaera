@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text, keyframes } from "@chakra-ui/react";
 import { theme } from "../theme";
 import Chart from "./Chart";
 
@@ -180,6 +180,11 @@ export default function Dashboard() {
     ],
   };
 
+  const fadeIn = keyframes`
+    from { opacity: 0; }
+    to { opacity: 1; }
+  `;
+
   return (
     <Flex
       sx={{
@@ -198,6 +203,7 @@ export default function Dashboard() {
           display: "flex",
           flexDirection: "column",
           gap: 2.5,
+          animation: `${fadeIn} 0.5s ease-in`,
         }}
       >
         <Text
@@ -206,6 +212,7 @@ export default function Dashboard() {
             fontSize: "5xl",
             fontWeight: "600",
             lineHeight: "1",
+            animation: `${fadeIn} 0.5s ease-in`,
           }}
         >
           {total} focos identificados
@@ -214,6 +221,7 @@ export default function Dashboard() {
           sx={{
             fontSize: "xs",
             fontWeight: "100",
+            animation: `${fadeIn} 0.5s ease-in`,
           }}
         >
           entre {monthNames[today.getMonth()]}/{today.getFullYear() - 2000} e{" "}
@@ -223,6 +231,7 @@ export default function Dashboard() {
           sx={{
             fontSize: "xl",
             fontWeight: "500",
+            animation: `${fadeIn} 0.5s ease-in`,
           }}
         >
           Em média {averageCases.toFixed(2)} focos identificados por dia
@@ -232,6 +241,7 @@ export default function Dashboard() {
             color: "brand.green500",
             fontSize: "xl",
             fontWeight: "500",
+            animation: `${fadeIn} 0.5s ease-in`,
           }}
         >
           36,9% de aumento em relação ao mesmo período do ano anterior
@@ -240,6 +250,7 @@ export default function Dashboard() {
           sx={{
             fontSize: "xl",
             fontWeight: "500",
+            animation: `${fadeIn} 0.5s ease-in`,
           }}
         >
           O mês com maior número de focos foi {monthNames[monthIndex]}, com{" "}
@@ -250,6 +261,7 @@ export default function Dashboard() {
         sx={{
           overflowY: "auto",
           height: `100%`,
+          animation: `${fadeIn} 0.5s ease-in`,
         }}
       >
         <Chart options={lineChartOptions} />
