@@ -28,7 +28,7 @@ export default function App() {
               "@media (max-width: 768px)": {
                 flex: "none",
                 flexDirection: "column",
-                height: "90vh",
+                height: "80vh",
               },
             }}
           >
@@ -39,10 +39,12 @@ export default function App() {
               borderRadius: "5px 0 0 5px",
               boxShadow: "-12px 0px 5px -3px rgba(0,0,0,0.25);",
               width: "400px",
-              maxWidth: "100vw",
+              maxWidth: "30vw",
               flex: 1,
               zIndex: 2,
               "@media (max-width: 768px)": {
+                w: "auto",
+                maxWidth: "100vw",
                 flex: "none",
                 flexDirection: "column",
                 borderTopLeftRadius: "12px",

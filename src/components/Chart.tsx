@@ -1,12 +1,18 @@
 import { Box, Text } from "@chakra-ui/react";
+import { useSize } from "@chakra-ui/react-use-size";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { useRef } from "react";
 
 export default function Chart(props: { options: any }) {
-  props.options.chart.width = 380;
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  const { width } = useSize(elementRef) ?? { width: null };
+  props.options.chart.width = width ? width : null;
 
   return (
     <Box
+      ref={elementRef}
       sx={{
         backgroundColor: "brand.darkgray",
         display: "flex",
